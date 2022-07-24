@@ -14,12 +14,13 @@ const App = () => {
   const [planPrice, setPlanPrice] = useState();
 
   const changeHandler = (e) => {
-    setPlanPrice(e.target.value);
+    const arr = options.filter((elem) => elem.key == e.target.value);
+      
+    setPlanPrice(arr[0].price);
+    setCurrentPlan(arr[0].plan);
   };
 
-  const submitHandler = (e) => {
-    
-  };
+  const submitHandler = (e) => {};
 
   return (
     <div id="main">
@@ -57,12 +58,10 @@ const App = () => {
               <p id="plan-price">{planPrice}</p>
             </div>
             <select onChange={changeHandler} className="select" id="select">
-              <option disabled selected>
-                Change
-              </option>
+              <option>Change</option>
               {options.map((option) => (
-                <option key={option.key} value={option.price}>
-                 {option.price}
+                <option key={option.key} value={option.key}>
+                  {option.price}
                 </option>
               ))}
             </select>
