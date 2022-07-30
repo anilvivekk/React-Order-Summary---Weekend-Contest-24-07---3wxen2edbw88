@@ -10,14 +10,14 @@ const options = [
 ];
 
 const App = () => {
-  const [currentPlan, setCurrentPlan] = useState();
-  const [planPrice, setPlanPrice] = useState();
+  const [currentPlan, setCurrentPlan] = useState(null);
+  // const [planPrice, setPlanPrice] = useState();
 
   const changeHandler = (e) => {
     const arr = options.filter((elem) => elem.key == e.target.value);
       
-    setPlanPrice(arr[0].price);
-    setCurrentPlan(arr[0].plan);
+    // setPlanPrice(arr[0].price);
+    setCurrentPlan(arr[0]);
   };
 
   const submitHandler = (e) => {};
@@ -54,8 +54,8 @@ const App = () => {
               </svg>
             </div>
             <div className="plan">
-              <h4 id="plan-title">{currentPlan}</h4>
-              <p id="plan-price">{planPrice}</p>
+              <h4 id="plan-title">{currentPlan?.plan}</h4>
+              <p id="plan-price">{currentPlan?.price}</p>
             </div>
             <select onChange={changeHandler} className="select" id="select">
               <option>Change</option>
